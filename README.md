@@ -1,4 +1,12 @@
-odoo configure
+<--      odoo configure      -->
+
+
+*to create envirement
+sudo apt update
+sudo apt install python3-venv
+python3 -m venv (myenv) | (You can give any name at myenv-just an environment name)
+source myenv/bin/activate
+
 * init postgresql
 sudo service postgresql status
 sudo su postgres
@@ -25,4 +33,4 @@ python3 -m pip install -r requirements.txt
 * run project
 ./odoo-bin --xmlrpc-port=8071 --addons-path=./addons,custom_addons --db_user=odoo --db_password=odoo
 
-* 
+
