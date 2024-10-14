@@ -27,7 +27,7 @@ python3 -m pip install setuptools wheel
 python3 -m pip install -r requirements.txt
 
 * run database server
-./odoo-bin --xmlrpc-port=8071 --addons-path=./addons --db_user=odoo --db_password=odoo
+./odoo-bin --xmlrpc-port=8071 --addons-path=./addons --db_user=odoo --db_password=odoo  (-c odoo.conf)
 
 
 * run project
