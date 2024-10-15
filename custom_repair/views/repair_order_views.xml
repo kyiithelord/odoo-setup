@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree view for Repair Orders -->
+    <record id="view_repair_order_tree" model="ir.ui.view">
+        <field name="name">repair.order.tree</field>
+        <field name="model">repair.order</field>
+        <field name="arch" type="xml">
+            <tree string="Repair Orders">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="customer_id"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for Repair Orders (with Repair Order Lines as a table) -->
+    <record id="view_repair_order_form" model="ir.ui.view">
+        <field name="name">repair.order.form</field>
+        <field name="model">repair.order</field>
+        <field name="arch" type="xml">
+            <form string="Repair Order">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="customer_id"/>
+                        <field name="customer_address" readonly="1"/>
+                        <field name="total" readonly="1"/>
+                    </group>
+                    <group string="Order Lines">
+                        <field name="order_line_ids">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="description"/>
+                                <field name="quantity"/>
+                                <field name="unit_price"/>
+                                <field name="price_subtotal" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view for Repair Orders -->
+    <record id="view_repair_order_search" model="ir.ui.view">
+        <field name="name">repair.order.search</field>
+        <field name="model">repair.order</field>
+        <field name="arch" type="xml">
+            <search string="Search Repair Orders">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="customer_id"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Menu for Repair Orders -->
+    <!-- Root menu -->
+    <menuitem id="menu_custom_repair_root" name="Repair" sequence="10"/>
+
+    <!-- Sub-menu for Repair Orders -->
+    <menuitem id="menu_repair_order" name="Repair Orders" parent="menu_custom_repair_root" action="action_repair_order"
+              sequence="10"/>
+
+    <!-- Action for Repair Orders -->
+    <record id="action_repair_order" model="ir.actions.act_window">
+        <field name="name">Repair Orders</field>
+        <field name="res_model">repair.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
